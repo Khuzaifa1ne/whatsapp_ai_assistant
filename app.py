@@ -1,8 +1,9 @@
 from flask import Flask, request
+import os
 
 app = Flask(__name__)
 
-VERIFY_TOKEN = "my_secure_verify_token_123"
+VERIFY_TOKEN = "Khuzaifa_verify_2026"
 
 @app.route("/", methods=["GET"])
 def home():
@@ -25,4 +26,5 @@ def webhook():
     return "EVENT_RECEIVED", 200
 
 if __name__ == "__main__":
-    app.run(port=5000)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
